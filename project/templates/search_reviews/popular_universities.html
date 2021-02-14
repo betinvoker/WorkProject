@@ -1,0 +1,74 @@
+<!-- Пять самых популярных университетов -->
+<h2 class="text-center title_page">Самые популярные университеты</h2>
+<div class="row row-cols-2 row-cols-md-5 g-5" style="margin-bottom: 30px;">
+  <div class="col">
+    <a href="{% url 'review' popular_universities.3.id %}">
+      <div class="card h-100" style="background: #dedbde;">
+      <img src="../static/img/logo/{{ popular_universities.3.logo }}" alt="..." class="rounded-circle mx-auto d-block" width="130" height="130" style="margin-top: 20px;">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ popular_universities.3.abbreviated }}</h5>
+      </div>
+      <div class="card-footer border-0">
+        <h3 class="card-text text-center" style="font-family: FreeMono, monospace">4</h3>
+        <p class="text-center">{{ popular_universities.3.sum_opinion_true }} | {{ popular_universities.3.sum_opinion_false }} | {{ popular_universities.3.count_opinion }}</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div class="col">
+    <a href="{% url 'review' popular_universities.1.id %}">
+      <div class="card h-100" style="background: #dedbde;">
+      <img src="../static/img/logo/{{ popular_universities.1.logo }}" alt="..." class="rounded-circle mx-auto d-block" width="130" height="130" style="margin-top: 20px;">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ popular_universities.1.abbreviated }}</h5>
+      </div>
+      <div class="card-footer border-0">
+        <h3 class="card-text text-center" style="font-family: FreeMono, monospace">2</h3>
+        <p class="text-center">{{ popular_universities.1.sum_opinion_true }} | {{ popular_universities.1.sum_opinion_false }} | {{ popular_universities.1.count_opinion }}</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div class="col">
+    <a href="{% url 'review' popular_universities.0.id %}">
+      <div class="card h-100" style="background: wheat;">
+      <img src="../static/img/logo/{{ popular_universities.0.logo }}" alt="..." class="rounded-circle mx-auto d-block" width="130" height="130" style="margin-top: 20px;">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ popular_universities.0.abbreviated }}</h5>
+      </div>
+      <div class="card-footer border-0">
+        <h3 class="card-text text-center" style="font-family: FreeMono, monospace">1</h3>
+        <p class="text-center">{{ popular_universities.0.sum_opinion_true }} | {{ popular_universities.0.sum_opinion_false }} | {{ popular_universities.0.count_opinion }}</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div class="col">
+    <a href="{% url 'review' popular_universities.2.id %}">
+      <div class="card h-100" style="background: #dedbde;">
+      <img src="../static/img/logo/{{ popular_universities.2.logo }}" alt="..." class="rounded-circle mx-auto d-block" width="130" height="130" style="margin-top: 20px;">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ popular_universities.2.abbreviated }}</h5>
+      </div>
+      <div class="card-footer border-0">
+        <h3 class="card-text text-center" style="font-family: FreeMono, monospace">3</h3>
+        <p class="text-center">{{ popular_universities.2.sum_opinion_true }} | {{ popular_universities.2.sum_opinion_false }} | {{ popular_universities.2.count_opinion }}</p>
+      </div>
+    </div>
+    </a>
+  </div>
+  <div class="col">
+    <a href="{% url 'review' popular_universities.3.id %}">
+      <div class="card h-100" style="background: #dedbde;">
+      <img src="../static/img/logo/{{ popular_universities.4.logo }}" alt="..." class="rounded-circle mx-auto d-block" width="130" height="130" style="margin-top: 20px;">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ popular_universities.4.abbreviated }}</h5>
+      </div>
+      <div class="card-footer border-0">
+        <h3 class="card-text text-center" style="font-family: FreeMono, monospace">5</h3>
+        <p class="text-center">{{ popular_universities.4.sum_opinion_true }} | {{ popular_universities.4.sum_opinion_false }} | {{ popular_universities.4.count_opinion }}</p>
+      </div>
+    </div>
+    </a>
+  </div>
+</div> 

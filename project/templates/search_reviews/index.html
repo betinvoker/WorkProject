@@ -1,0 +1,72 @@
+<!-- Подключение шаблона страницы -->
+{% extends "base.html" %}
+<!-- Название вкладки страницы -->
+{% block title %}Главная страница{% endblock title %}
+<!-- Заголовок страницы -->
+{% block header %}Главная{% endblock header %}
+<!-- Контент страницы с основной информацией -->
+{% block content_center %}
+<div class="row justify-content-center" style="margin-top: 80px;">
+    <p class="display-3">
+        Университеты России
+    </p>
+</div>
+<!-- Пять самых популярных университетов -->
+{% include "search_reviews\popular_universities.html" %}
+
+{% endblock content_center %}
+
+<!-- Контент страницы с информацией об университетах -->
+{% block content_end %}
+<div class="row justify-content-center">
+  <div class="row row-cols-2 g-4">
+    {% for university in page_obj %}
+    <div class="col">
+      <div class="card h-100" style="margin-top: 20px;">
+        <a href="{% url 'review' university.id %}">
+          <div class="row g-0">
+            <div class="col-md-3">
+              {% if university.logo %}
+                <img src="/static/img/logo/{{ university.logo }}" alt="{{ university.name }}" class="align-self-start mr-5 pie" style="margin: 20px;"width="80" height="80">
+              {% else %}
+                <img src="/static/img/rocket-startup.png" alt="{{ university.name }}" class="align-self-start mr-5 pie" style="margin: 20px;"width="80" height="80">
+              {% endif %}
+            </div>
+            <div class="col-md-9">
+              <div class="card-body">
+                <h5 class="mt-0">{{ university.abbreviated }}</h5>
+                <p class="mb-0">{{ university.name }}</p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+                <p class="status_badge" style="font-size: 12pt;">
+                  Положительные: <span style="color: green;">{{ university.sum_opinion_true|default_if_none:"0" }}</span> |
+                  Отрицательные: <span style="color: red;">{{ university.sum_opinion_false|default_if_none:"0" }}</span> |
+                  Все: <span style="color: gray;">{{ university.count_opinions }}</span>
+                </p>   
+              </small>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="mt-0">Пока нет ни одного университета.</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content_end %}
+
+{% block footer %}
+
+<!-- Пагинация для перемещения по списку университетов -->
+{% include "search_reviews\paginator.html" %}
+
+{% endblock footer %}

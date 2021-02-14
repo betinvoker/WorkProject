@@ -1,0 +1,79 @@
+<!-- Подключение шаблона страницы -->
+{% extends "base.html" %}
+<!-- Название вкладки страницы -->
+{% block title %}Поиск {{ q|cut:"&"|cut:"q=" }}{% endblock title %}
+<!-- Заголовок страницы -->
+{% block header %}Поиск{% endblock header %}
+<!-- Контент страницы с основной информацией -->
+{% block content_center %}
+<div class="row justify-content-center" style="margin-top: 80px;">
+    <p class="display-3">
+        Результаты поиска: {{ q|cut:"&"|cut:"q=" }}
+    </p>
+</div>
+
+{% endblock content_center %}
+
+<!-- Контент страницы с информацией об университетах -->
+{% block content_end %}
+<div class="row justify-content-center">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 g-md-2">
+    {% for university in page_obj %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <a href="{% url 'review' university.id %}">
+                {% if university.logo %}
+                    <img src="/static/img/logo/{{ university.logo }}" alt="{{ university.name }}" class="rounded mx-auto d-block" style="margin: 20px;"width="120" height="120">
+                {% else %}
+                    <img src="/static/img/rocket-startup.png" alt="{{ university.name }}" class="rounded mx-auto d-block" style="margin: 20px;"width="120" height="120">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ university.abbreviated }}</h5>
+                  <p class="card-text text-center">{{ university.name }}</p>
+                </div>
+            </a>   
+        </div>
+    </div>
+    {% empty %}
+    <div class="col col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="mt-0">Пока нет ни одного университета.</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content_end %}
+
+{% block footer %}
+<!-- Пагинация для перемещения по списку университетов -->
+<div class="row justify-content-center" style="margin : 30px 0 30px 0;">
+    <div class="col-2">
+      <nav aria-label="...">
+          <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="?{{ q }}page=1">Начало</a>
+            </li>
+            <li class="page-item">
+              {% if page_obj.has_previous %}
+                <a class="page-link" href="?{{ q }}page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+              {% endif %}
+            </li>
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">{{ page_obj.number }}</span>
+            </li>
+            <li class="page-item">
+              {% if page_obj.has_next %}
+                <a class="page-link" href="?{{ q }}page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+              {% endif %}
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?{{ q }}page={{ page_obj.paginator.num_pages }}">Конец</a>
+            </li>
+          </ul>
+      </nav>
+    </div>
+</div>
+{% endblock footer %}
