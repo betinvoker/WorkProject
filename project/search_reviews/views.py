@@ -10,7 +10,7 @@ from django.db.models import Q
 #   Главная страница
 class UniversitiesListView(ListView):
     template_name = "search_reviews/index.html"
-    paginate_by = 10
+    paginate_by = 20
 
     def get_queryset(self):
         return Universities.universities_objects.all()

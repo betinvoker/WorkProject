@@ -28,6 +28,12 @@
             <circle class="donut-segment" cx="10" cy="10" r="3.183098861837907" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="'{% widthratio positive_opinions count_opinions 100 %}'" stroke-dashoffset="25"></circle>
             <circle class="donut-segment" cx="10" cy="10" r="3.183098861837907" fill="transparent" stroke="#b1c94e" stroke-width="3" stroke-dasharray="'{% widthratio negative_opinions count_opinions 100 %}'" stroke-dashoffset="25"></circle>
           </svg>
+          <svg width="300px" height="300px" viewBox="0 0 20 20" class="donut">
+            <circle cx="10" cy="10" r="3.183098861837907" fill="#fff"></circle>
+            <circle class="donut-ring" cx="10" cy="10" r="3.183098861837907" fill="transparent" stroke="#d2d3d4" stroke-width="3"></circle>
+            <circle class="donut-segment" cx="10" cy="10" r="3.183098861837907" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="'{% widthratio positive_opinions count_opinions 100 %}'" stroke-dashoffset="25"></circle>
+            <circle class="donut-segment" cx="10" cy="10" r="3.183098861837907" fill="transparent" stroke="#b1c94e" stroke-width="3" stroke-dasharray="'{% widthratio negative_opinions count_opinions 100 %}'" stroke-dashoffset="25"></circle>
+          </svg>
 
           <p>
             <span class="status_badge" style="color: green; font-size: 16pt;">Положительные : {{ positive_opinions }}</span>
